@@ -33,7 +33,7 @@ class Window:
         def add_player_button_function():
             name = self.addPlayerTextbox.get()
             init = self.initTextbox.get()
-            if self.isBattle or name == '' or init == '' or not init.isdigit():
+            if name == '' or init == '' or not init.isdigit():
                 return
             player = Player(self, name, init)
             self.initList.add_player(player)
@@ -90,6 +90,8 @@ class Window:
         self.nextButton = Button(self.master, text='NEXT', command=next, bg='#00aaff', width=20)
         self.nextButton.grid(row=0, column=3, columnspan=3)
         self.nextButton.grid_remove()
+
+        self.master.bind('<space>', lambda event: next())
 
     def addEditFrame(self):
         self.editFrame = Frame(self.master, width=100, height=400)
